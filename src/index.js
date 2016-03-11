@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Detail from './pages/Detail';
 
 ReactDOM.render(
-    <Detail message="This message is coming from props!" />,
+    <Detail message="This message is coming from props!" foo="bar" baz="qux" />,
     document.getElementById('app')
 );
 
