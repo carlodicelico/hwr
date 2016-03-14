@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import agent from 'superagent';
 
 class Detail extends React.Component {
@@ -82,7 +83,10 @@ class Detail extends React.Component {
 
         return (
              <div>
-                <h2>{this.props.message}</h2>
+                <p>Please choose a repository from the list below.</p>
+                <ul>
+                    <li><Link to="/">List</Link></li>
+                </ul>
                 <button onClick={this.selectMode.bind(this, 'commits')}>Show Commits</button>
                 <button onClick={this.selectMode.bind(this, 'forks')}>Show Forks</button>
                 <button onClick={this.selectMode.bind(this, 'pulls')}>Show Pulls</button>
