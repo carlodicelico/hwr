@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute } from 'react-router';
-import createHistory from 'history/lib/createHashHistory';
+import { Router, useRouterHistory } from 'react-router';
+import createHashHistory from 'history/lib/createHashHistory';
 
-import Detail from './pages/Detail';
-import List from './pages/List';
+import routes from './routes';
 
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 ReactDOM.render(
-    <Router history={ createHistory({ queryKey: false })} onUpdate={() => window.scrollTo(0, 0)}>
-        <Route path="/" component={ List } />
-        <Route path="/detail/:repo" component={ Detail } />
+    <Router history={appHistory}
+        onUpdate={() => window.scrollTo(0, 0)}>
+        {routes}
     </Router>,
     document.getElementById('app')
 );
