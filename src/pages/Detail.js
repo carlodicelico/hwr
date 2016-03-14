@@ -21,7 +21,8 @@ class Detail extends React.Component {
     }
 
     fetchFeed(type) {
-        agent.get(`https://api.github.com/repos/facebook/react/${type}`)
+        const baseURL = 'https://api.github.com/repos/facebook';
+        agent.get(`${baseURL}/${this.props.params.repo}/${type}`)
             .end((error, response) => {
                 if (!error && response) { this.setState({ [type]: response.body }); }
                 else { console.log(`Error fetching ${type}`, error); }
