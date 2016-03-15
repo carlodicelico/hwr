@@ -38,7 +38,7 @@ class Detail extends React.Component {
 
             return (
                 <p key={index}>
-                    <strong>{author}</strong>:
+                    <strong><Link to={`/user/${author}`}>{author}</Link></strong>:
                     <a href={commit.html_url}>{commit.commit.message}</a>.
                 </p>
             );
@@ -51,7 +51,7 @@ class Detail extends React.Component {
 
             return (
                 <p key={index}>
-                    <strong>{author}</strong>
+                    <strong><Link to={`/user/${author}`}>{author}</Link></strong>:
                     <a href={pull.html_url}>{pull.body}</a>.
                 </p>
             );
@@ -64,7 +64,7 @@ class Detail extends React.Component {
 
             return (
                 <p key={index}>
-                    <strong>{author}</strong>: forked to
+                    <strong><Link to={`/user/${author}`}>{author}</Link></strong> forked to:
                     <a href={fork.html_url}>{fork.html_url}</a> at {fork.created_at}.
                 </p>
             );
@@ -87,6 +87,9 @@ class Detail extends React.Component {
                 <p>Please choose a repository from the list below.</p>
                 <ul>
                     <li><Link to="/">List</Link></li>
+                    <li><Link to="/detail/react">React</Link></li>
+                    <li><Link to="/detail/react-native">React Native</Link></li>
+                    <li><Link to="/detail/jest">Jest</Link></li>
                 </ul>
                 <button onClick={this.selectMode.bind(this, 'commits')}>Show Commits</button>
                 <button onClick={this.selectMode.bind(this, 'forks')}>Show Forks</button>
@@ -98,3 +101,4 @@ class Detail extends React.Component {
 }
 
 export default Detail;
+
