@@ -21,14 +21,18 @@ class Detail extends React.Component {
     }
 
     fetchFeed(type) {
+        console.log(`fetching feed for ${type}`);
+        if (this.props.params.repo === '') { return; }
         const baseURL = 'https://api.github.com/repos/facebook';
         agent.get(`${baseURL}/${this.props.params.repo}/${type}`)
             .end((error, response) => {
-                if (!error && response) { this.setState({ [type]: response.body }); }
+                if (!error && response) { this.saveFeed(type, response.body); }
                 else { console.log(`Error fetching ${type}`, error); }
             }
         );
     }
+
+    saveFeed(type, contents) { this.setState({ [type]: contents }); }
 
     selectMode(mode) { this.setState({ mode: mode }); }
 
@@ -84,7 +88,6 @@ class Detail extends React.Component {
 
         return (
              <div>
-                <p>Please choose a repository from the list below.</p>
                 <ul>
                     <li><Link to="/">List</Link></li>
                     <li><Link to="/detail/react">React</Link></li>
@@ -99,6 +102,8 @@ class Detail extends React.Component {
         );
     }
 }
+
+Detail.propTypes = { params: React.PropTypes.object, };
 
 export default Detail;
 

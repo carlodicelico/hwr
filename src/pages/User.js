@@ -21,28 +21,39 @@ class User extends React.Component {
         );
     }
 
-    render() {
-        <ul>
-            <li><Link to="/">List</Link></li>
-            <li><Link to="/detail/react">React</Link></li>
-            <li><Link to="/detail/react-native">React Native</Link></li>
-            <li><Link to="/detail/jest">Jest</Link></li>
-        </ul>
-        return <ul>
-            {this.state.events.map((event, index) => {
-                const eventType = event.type,
-                    repoName = event.repo.name,
-                    creationDate = event.created_at;
+    renderUserFeed() {
+        return this.state.events.map((event, index) => {
+            const eventType = event.type,
+                repoName = event.repo.name,
+                creationDate = event.created_at;
 
-                return (
-                    <li key={index}>
-                        <strong>{repoName}</strong>: {eventType} at {creationDate}
-                    </li>
-                );
-            })}
-        </ul>;
+            return (
+                <li key={index}>
+                    <strong>{repoName}</strong>: {eventType} at {creationDate}
+                </li>
+            );
+        })
+    }
+
+    render() {
+        let content = this.renderUserFeed();
+        return (
+            <div>
+                <ul>
+                    <li><Link to="/">List</Link></li>
+                    <li><Link to="/detail/react">React</Link></li>
+                    <li><Link to="/detail/react-native">React Native</Link></li>
+                    <li><Link to="/detail/jest">Jest</Link></li>
+                </ul>
+                <ul>
+                    {content}
+                </ul>
+            </div>
+        );
     }
 }
+
+User.propTypes = { params: React.PropTypes.object, };
 
 export default User;
 
