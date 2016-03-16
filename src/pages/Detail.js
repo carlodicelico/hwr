@@ -99,9 +99,9 @@ class Detail extends React.Component {
              <p>You are here: {this.props.params.repo}</p>
                 <ul><strong>Menu:</strong>
                     <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                    <li><Link to="/detail/react">React</Link></li>
-                    <li><Link to="/detail/react-native">React Native</Link></li>
-                    <li><Link to="/detail/jest">Jest</Link></li>
+                    <li><Link to="/detail/react" activeClassName="active">React</Link></li>
+                    <li><Link to="/detail/react-native" activeClassName="active">React Native</Link></li>
+                    <li><Link to="/detail/jest" activeClassName="active">Jest</Link></li>
                 </ul>
                 <button onClick={this.selectMode.bind(this, 'commits')}>Show Commits</button>
                 <button onClick={this.selectMode.bind(this, 'forks')}>Show Forks</button>

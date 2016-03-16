@@ -41,9 +41,9 @@ class User extends React.Component {
             <div>
                <p>You are here: <IndexLink to="/" activeClassName="active">Home</IndexLink></p>
                 <ul>
-                    <li><Link to="/detail/react">React</Link></li>
-                    <li><Link to="/detail/react-native">React Native</Link></li>
-                    <li><Link to="/detail/jest">Jest</Link></li>
+                    <li><Link to="/detail/react" activeClassName="active">React</Link></li>
+                    <li><Link to="/detail/react-native" activeClassName="active">React Native</Link></li>
+                    <li><Link to="/detail/jest" activeClassName="active">Jest</Link></li>
                 </ul>
                 <ul>
                     {content}
