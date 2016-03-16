@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { IndexLink, Link } from 'react-router';
 import agent from 'superagent';
 
 class Detail extends React.Component {
@@ -20,6 +20,8 @@ class Detail extends React.Component {
         this.fetchFeed('pulls');
     }
 
+    componentWillReceiveProps(newProps) { this.fetchAll(); }
+
     fetchFeed(type) {
         console.log(`fetching feed for ${type}`);
         if (this.props.params.repo === '') { return; }
@@ -30,6 +32,12 @@ class Detail extends React.Component {
                 else { console.log(`Error fetching ${type}`, error); }
             }
         );
+    }
+
+    fetchAll() {
+        this.fetchFeed('commits');
+        this.fetchFeed('pulls');
+        this.fetchFeed('forks');
     }
 
     saveFeed(type, contents) { this.setState({ [type]: contents }); }
@@ -88,8 +96,9 @@ class Detail extends React.Component {
 
         return (
              <div>
-                <ul>
-                    <li><Link to="/">List</Link></li>
+             <p>You are here: {this.props.params.repo}</p>
+                <ul><strong>Menu:</strong>
+                    <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
                     <li><Link to="/detail/react">React</Link></li>
                     <li><Link to="/detail/react-native">React Native</Link></li>
                     <li><Link to="/detail/jest">Jest</Link></li>

@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { IndexLink, Link } from 'react-router';
 
 class List extends React.Component {
     render() {
         return (
             <div>
-                <ul>
+             <p>You are here: {this.props.params.repo}</p>
+                <ul><strong>Menu:</strong>
+                    <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
                     <li><Link to="/detail/react">React</Link></li>
                     <li><Link to="/detail/react-native">React Native</Link></li>
                     <li><Link to="/detail/jest">Jest</Link></li>

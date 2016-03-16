@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { IndexLink, Link } from 'react-router';
 import agent from 'superagent';
 
 class User extends React.Component {
@@ -39,8 +39,8 @@ class User extends React.Component {
         let content = this.renderUserFeed();
         return (
             <div>
+               <p>You are here: <IndexLink to="/" activeClassName="active">Home</IndexLink></p>
                 <ul>
-                    <li><Link to="/">List</Link></li>
                     <li><Link to="/detail/react">React</Link></li>
                     <li><Link to="/detail/react-native">React Native</Link></li>
                     <li><Link to="/detail/jest">Jest</Link></li>
